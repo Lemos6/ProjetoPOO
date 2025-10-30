@@ -11,13 +11,16 @@ namespace ProjetoPOO
         public int Id { get; set; }
         public string Nome { get; set; }
         public int idade { get; set; }
-        public int podeVotar { get; set; }
-        public int jaVotou { get; set; }
+        public bool podeVotar { get; set; }
+        public bool jaVotou { get; set; }
 
         private const int IdadeMinima = 35;
         public bool ElegivelParaCandidatar()
         {
-            return idade >= IdadeMinima;
+            bool elegivel = idade >= IdadeMinima;
+            podeVotar = elegivel;
+            jaVotou = false;
+            return elegivel;
         }
     }
 }

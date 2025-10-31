@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Candidato.cs" />
     <Compile Include="CandidatosLista.cs" />
+    <Compile Include="ContadorVotos.cs" />
     <Compile Include="EleitoresLista.cs" />
     <Compile Include="Eleitor.cs" />
     <Compile Include="Program.cs" />

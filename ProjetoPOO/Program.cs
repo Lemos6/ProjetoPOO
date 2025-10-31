@@ -12,6 +12,7 @@ namespace ProjetoPOO
         {
             // Instanciar a lista de candidatos
             var listaCandidatos = new CandidatosLista();
+            var eleitorAtual = new Eleitor();
 
             while (true)
             {
@@ -32,7 +33,24 @@ namespace ProjetoPOO
                     case "3":
                         listaCandidatos.EscreverListaCandidatos();
                         break;
-                    // Adicione outros cases conforme necessário
+                    case "5":
+                       
+                        var votar = new Votar();
+                        var candidatos = votar.ObterCandidatos();
+                        Console.WriteLine("Digite o número do candidato para votar:");
+                        var input = Console.ReadLine();
+                        if (int.TryParse(input, out int numeroCandidato) &&
+                            numeroCandidato >= 1 && numeroCandidato <= candidatos.Count)
+                        {
+                            var candidatoEscolhido = candidatos[numeroCandidato - 1];
+                            Console.WriteLine($"Você votou em: {candidatoEscolhido.Nome}");
+                            eleitorAtual.JaVotou = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Número de candidato inválido.");
+                        }
+                        break;
                 }
             }
         }

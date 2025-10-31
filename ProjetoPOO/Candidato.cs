@@ -19,7 +19,6 @@ namespace ProjetoPOO
         {
             bool elegivel = idade >= IdadeMinima;
             podeVotar = elegivel;
-            jaVotou = false;
             return elegivel;
         }
     }

@@ -29,14 +29,14 @@ namespace ProjetoPOO
             Idade = int.Parse(Console.ReadLine() ?? "0");
 
 
-            // Corrigir: Votar precisa ser do tipo Eleitor para ser adicionado à lista
-            // Solução: Criar um objeto Eleitor e adicionar à lista
+            // Corrigir Votar precisa ser do tipo Eleitor para ser adicionado à lista
+            // Solução Criar um objeto Eleitor e adicionar à lista
             var eleitor = new Eleitor
             {
                 Id = this.Id,
                 Nome = this.Nome,
                 Idade = this.Idade,
-                // Adicione outras propriedades necessárias aqui
+                // Adicionar outras propriedades necessárias aqui
             };
             if (!eleitor.ElegivelParaVotar)
             {

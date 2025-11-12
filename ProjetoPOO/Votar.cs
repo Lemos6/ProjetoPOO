@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace ProjetoPOO
 {
     // Herda apenas de Candidato; usa composição para acessar CandidatosLista
-    internal class Votar : Eleitor // Corrigir para herdar de Eleitor, se necessário
+    internal class Votar : Eleitor // Corrigir herdar de Eleitor, se necessário
     {
         private readonly EleitoresLista _listaEleitores;
 
-        // Construtor padrão cria uma lista nova
+        
         public Votar() : this(new EleitoresLista())
         {
         }

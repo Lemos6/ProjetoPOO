@@ -71,5 +71,22 @@ namespace ProjetoPOO
         {
             Votos.Add(voto);
         }
+
+        // NOVO: Permite que o admin defina o período de votação
+        public void DefinirPeriodoVotacao(DateTime inicio, DateTime fim)
+        {
+            if (fim <= inicio)
+                throw new ArgumentException("A data de fim deve ser posterior à data de início.");
+
+            DataInicio = inicio;
+            DataFim = fim;
+        }
+
+        // NOVO: Inicia a votação a partir de agora por uma duração indicada
+        public void IniciarAgora(TimeSpan duracao)
+        {
+            DataInicio = DateTime.Now;
+            DataFim = DataInicio.Add(duracao);
+        }
     }
 }

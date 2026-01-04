@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetoPOO.Servicos;
 
 namespace ProjetoPOO
 {
@@ -10,9 +11,62 @@ namespace ProjetoPOO
     {
         static void Main(string[] args)
         {
+            Admin admin = new Admin(
+                id: 999,
+                nome: "admin",
+                senha: "admin123"
+                );
+            // 2️⃣ Criar serviços
+            AdminService adminService = new AdminService(admin);
+            EleicaoService eleicaoService = new EleicaoService();
+
+            // 3️⃣ Criar eleição
+            Eleicao eleicaoAtual = eleicaoService.CriarEleicao();
+
             var listaCandidatos = new CandidatosLista();
             var listaEleitores = new EleitoresLista();
             var sistemaVotacao = new SistemaVotacao(listaCandidatos, listaEleitores);
+            while (true) {
+                Console.WriteLine("=========================================");
+                Console.WriteLine("         SISTEMA DE VOTAÇÃO");
+                Console.WriteLine("=========================================");
+                Console.WriteLine("Deseja iniciar uma nova eleição? (s/n): ");
+                var resposta = Console.ReadKey();
+                if (resposta.KeyChar == 's' ) 
+                break;
+            }
+
+            bool adminAutenticado = false;
+            while (!adminAutenticado) 
+            {
+                Console.WriteLine("Inicie Sessáo como Admin");
+                Console.WriteLine("Digite o seu ID");
+                var id = Console.ReadLine();
+                if (id == "999")
+                {
+                    // repetir a solicitação da senha até que esteja correta
+                    while (!adminAutenticado)
+                    {
+                        Console.WriteLine("Digite a sua senha.");
+                        var tentativa = Console.ReadLine();
+                        if (admin.Autenticar(admin.Nome, tentativa))
+                        {
+                            Console.WriteLine("Autenticação bem-sucedida!");
+                            adminAutenticado = true;
+                            // passa também a lista de candidatos para sincronizar adições do admin
+                            AdminMenu.Executar(adminService, eleicaoAtual, listaCandidatos);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Falha na autenticação. Senha incorreta. Tente novamente.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("ID incorreto. Tente novamente.");
+                }
+            }
 
             while (true)
             {
@@ -102,7 +156,7 @@ namespace ProjetoPOO
                 Console.WriteLine($"\nID: {e.Id}");
                 Console.WriteLine($"Nome: {e.Nome}");
                 Console.WriteLine($"Idade: {e.Idade} anos");
-                Console.WriteLine($"Pode votar: {(e.PodeVotar ? "Sim" : "Não (menor de 18)")}");
+                Console.WriteLine($"Pode votar: {(e.PodeVotar ? "Sim" : "Não (menor de 18)")}"); 
                 Console.WriteLine($"Já votou: {(e.JaVotou ? "Sim" : "Não")}");
                 Console.WriteLine($"Elegível para votar: {(e.ElegivelParaVotar ? "Sim" : "Não")}");
                 Console.WriteLine("------------------------------------------");

@@ -31,7 +31,7 @@ namespace ProjetoPOO
             eleitores.Add(eleitor);
         }
 
-        // opcional: método para obter todos
+       
         public IReadOnlyList<Eleitor> ObterTodos() => eleitores.AsReadOnly();
     }
 }

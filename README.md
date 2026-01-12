@@ -1,7 +1,7 @@
 #  Sistema de Votação Eletrónica
 
 **[](#sistema-de-votação-eletrónica)**  
-**Projeto académico desenvolvido no âmbito da Licenciatura em Engenharia Informática (IPB Bragança).**
+**Projeto académico desenvolvido no âmbito da Licenciatura em Engenharia Informática Medica.**
 
 ##  Funcionalidades principais
 **[](#funcionalidades-principais)**
